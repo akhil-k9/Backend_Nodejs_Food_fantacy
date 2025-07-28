@@ -82,7 +82,7 @@ const vendorLogin = async (req, res) => {
         const token = jwt.sign(
             { vendorId: vendor._id },
              secretKey,
-            { expiresIn: "1h" }
+            { expiresIn: "4h" }
         );
 
         res.status(200).json({
