@@ -78,7 +78,7 @@ const vendorLogin = async (req, res) => {
 
         const token = jwt.sign(
             { vendorId: vendor._id },
-            process.env.JWT_SECRET || secretKey,
+             secretKey,
             { expiresIn: "1h" }
         );
 
