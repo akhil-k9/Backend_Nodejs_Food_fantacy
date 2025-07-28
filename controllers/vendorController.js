@@ -5,9 +5,12 @@ const dotEnv = require('dotenv');
 
 dotEnv.config();
 
-const secretKey = process.env.WhatIsYourName
+const secretKey = process.env.WhatIsYourName || process.env.JWT_SECRET_KEY;
 
-
+if (!secretKey) {
+    console.error("JWT_SECRET_KEY not defined!");
+    throw new Error("JWT_SECRET_KEY is not defined in environment variables");
+}
 
 const vendorRegister = async(req, res) => {
     const { username, email, password } = req.body;
@@ -93,7 +96,7 @@ const vendorLogin = async (req, res) => {
 
     } catch (error) {
         console.error("Login Error:", error);
-        res.status(500).json({ error: "Internal server error" });
+        res.status(500).json({ error,error: "Internal server error" });
     }
 };
 
