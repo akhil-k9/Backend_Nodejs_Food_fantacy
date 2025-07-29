@@ -4,8 +4,9 @@ const dotEnv = require('dotenv');
 
 dotEnv.config()
 
-const secretKey = process.env.WhatIsYourName
+// const secretKey = process.env.WhatIsYourName || process.env.JWT_SECRET_KEY;
 
+const secretKey = process.env.JWT_SECRET_KEY || process.env.WhatIsYourName;
 
 const verifyToken = async(req, res, next) => {
     const token = req.headers.token;
