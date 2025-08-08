@@ -9,6 +9,7 @@ const cors = require('cors');
 const path = require('path');
 const userRoutes = require('./routes/userRoutes');
 const cartRoutes = require('./routes/cartRoutes');
+const locationRoutes = require('./routes/locationRoutes');
 
 const app = express()
 
@@ -29,6 +30,7 @@ app.use('/uploads', express.static('uploads'));
 
 app.use('/user',userRoutes);
 app.use('/cart', cartRoutes);
+app.use('/location',locationRoutes);
 
 app.listen(PORT, () => {
     console.log(`server started and running at ${PORT}`);

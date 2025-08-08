@@ -1,16 +1,3 @@
-// const mongoose = require('mongoose');
-
-// const userSchema = new mongoose.Schema({
-//   email: {
-//     type: String,
-//     required: true,
-//     unique: true
-//   }
-// }, { timestamps: true });
-
-// module.exports = mongoose.model('User', userSchema);
-
-
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
@@ -19,6 +6,25 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
+
+  // Optional: name and phone
+  name: {
+    type: String
+  },
+  phone: {
+    type: String
+  },
+
+  // 📍 Location info
+  location: {
+    type: String // e.g., "Hyderabad"
+  },
+  coordinates: {
+    lat: { type: Number },
+    lon: { type: Number }
+  },
+
+  // 🛒 Cart items
   cart: [
     {
       product: {
@@ -31,6 +37,7 @@ const userSchema = new mongoose.Schema({
       }
     }
   ]
+
 }, { timestamps: true });
 
 module.exports = mongoose.model('User', userSchema);
